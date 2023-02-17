@@ -14,15 +14,15 @@ require 'phpmailer/src/PHPMailer.php';
 $recipients = array();
 
 $recipients[] = array(
-	'email' => 'me@example.com',
-	'name' => 'Your Name'
+	'email' => 'nozad202@gmail.com',
+	'name' => 'WordWeaver'
 );
 
 
 // Set the sender email address here
 $sender = array(
-	'email' => 'donotreply@companywebsite.com',
-	'name' => 'Company Name'
+	'email' => 'nozad202@gmail.com',
+	'name' => 'WordWeaver'
 );
 
 

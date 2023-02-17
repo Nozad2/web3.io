@@ -7,7 +7,7 @@ require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
 
 // If you intend you use SMTP, uncomment next line
-//require 'phpmailer/src/SMTP.php';
+require 'phpmailer/src/SMTP.php';
 
 
 // Set the recipient email address here
@@ -34,7 +34,35 @@ $recaptcha_secret = '';
 $mail = new PHPMailer();
 
 // If you intend you use SMTP, add your SMTP Code after this Line
+if(isset($_POST["send"])) {
+	$mail = new PHPMailer(true);
 
+	$mail->isSMTP();
+	$mail->Host = 'smtp.gmail.com';
+	$mail->Username = 'nozad202@gmail.com'; // my gmail
+	$mail->Password = 'qgaxsvkkkcxrxdmx'; // my gmail app password
+	$mail->SMTPSecure = 'ssl' ;
+	$mail->Port = 465;
+
+	$mail->setFrom('nozad202@gmail.com'); //my gmail
+
+	$mail->AddAddress($_POST["email"]);
+
+	$mail->isHTML(true);
+
+	$mail->Subject = $_POST["subject"];
+	$mail->Body = $_POST["messege"];
+
+	$mail->send();
+
+	echo
+	"
+  <script>
+	alert('Sent Successfully');
+	document.location.href = 'index.html';
+	</script>
+  ";
+}
 
 // End of SMTP
 
